@@ -6,6 +6,7 @@
     "module": "commonjs",
     "types": [
       "jasmine",
+      "firebase",
       "node"
     ]
   },
@@ -15,5 +16,8 @@
   "include": [
     "**/*.spec.ts",
     "**/*.d.ts"
+  ],
+  "typeRoots": [
+    "../node_modules/@types"
   ]
 }
