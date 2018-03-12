@@ -12,6 +12,7 @@ export class AuthGuard implements CanActivate {
     if (sessionStorage.getItem('access') != undefined) {
       return true;
     }
+    window.location.reload();
     return false;
   }
 

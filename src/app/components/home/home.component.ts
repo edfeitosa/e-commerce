@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { SocialService } from './../../services/social.service';
 
 @Component({
@@ -9,7 +10,11 @@ import { SocialService } from './../../services/social.service';
 
 export class HomeComponent implements OnInit {
 
-  constructor(private socialService: SocialService) { }
+  constructor(private socialService: SocialService, private router: Router) {
+    if (sessionStorage.getItem('access') != undefined) {
+      this.router.navigate(['/products/shop']);
+    }
+  }
 
   ngOnInit() { }
 
@@ -22,7 +27,7 @@ export class HomeComponent implements OnInit {
   }
 
   logout(): void {
-    this.logout();
+    this.socialService.signOut();
   }
 
 }

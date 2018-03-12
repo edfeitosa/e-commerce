@@ -1,4 +1,9 @@
 import { Component, OnInit } from '@angular/core';
+import { AngularFireAuth } from 'angularfire2/auth';
+import * as firebase from 'firebase/app';
+import { Observable } from 'rxjs/Observable';
+
+import { SocialService } from './../../../services/social.service';
 
 @Component({
   selector: 'app-shop',
@@ -7,9 +12,19 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ShopComponent implements OnInit {
 
-  constructor() { }
+  user: Observable<firebase.User>
 
-  ngOnInit() {
+  constructor(
+    private socialService: SocialService, 
+    private afAuth: AngularFireAuth
+  ) {
+    this.user = this.afAuth.authState
+  }
+
+  ngOnInit() { }
+
+  logout(): void {
+    this.socialService.signOut();
   }
 
 }
