@@ -3,14 +3,14 @@ import { AngularFireAuth } from 'angularfire2/auth';
 import * as firebase from 'firebase/app';
 import { Observable } from 'rxjs/Observable';
 
-import { SocialService } from './../../../services/social.service';
+import { SocialService } from './../../services/social.service';
 
 @Component({
-  selector: 'app-list',
-  templateUrl: './list.component.html',
-  styleUrls: ['./list.component.css']
+  selector: 'app-social',
+  templateUrl: './social.component.html',
+  styleUrls: ['./social.component.css']
 })
-export class ListComponent implements OnInit {
+export class SocialComponent implements OnInit {
 
   user: Observable<firebase.User>
 

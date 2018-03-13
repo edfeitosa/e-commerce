@@ -1,1 +1,146 @@
-/* You can add global styles to this file, and also import other style files */
+* {
+    padding: 0px;
+    margin: 0px;
+}
+
+.clear {
+    clear: both;
+    display: block;
+}
+
+body {
+    font-family: tahoma;
+    font-size: 1rem;
+    padding: 70px 0px 50px 0px;
+    background-color: #f1f1f1;
+}
+
+h1 {
+    color: #666;
+    font-size: 2rem;
+    letter-spacing: -1px;
+}
+
+/* header */
+.header {
+    position: absolute;
+    width: 100%;
+    height: 80px;
+    padding: 10px 0px;
+    background-color: #ddd;
+    top: 0px;
+}
+
+.header img {
+    height: 80px;
+}
+
+/* menu */
+.social {
+    position: absolute;
+    width: 100%;
+    height: 20px;
+    padding: 10px 0px;
+    background-color: #ccc;
+    color: #fff;
+    top: 100px;
+    text-align: right;
+}
+
+.social .gray {
+    font-weight: 700;
+    color: #666;
+}
+
+.social .foto {
+    float: right;
+    width: 30px;
+    height: 30px;
+    border: 5px solid rgb(219, 0, 0);
+    border-radius: 50px;
+    background-color: #fff;
+    margin: -10px 0px 0px 10px;
+    overflow: hidden;
+}
+
+.social .sair {
+    float: right;
+    width: 40px;
+    height: 40px;
+    border: 5px solid rgb(219, 0, 0);
+    border-radius: 50px;
+    background-color: rgb(219, 0, 0);
+    margin: -10px 0px 0px 5px;
+    overflow: hidden;
+    color: #fff;
+    text-align: center;
+    cursor: pointer;
+    font-weight: 700;
+}
+
+.social .sair img {
+    width: 100%;
+}
+
+/* conteúdo das div's semânticas */
+.container {
+    position: relative;
+    width: 1024px;
+    margin-left: 50%;
+    left: -512px;
+}
+
+.centralizar {
+    text-align: center;
+}
+
+.margin75 {
+    margin-top: 75px;
+}
+
+/* página de login */
+.login {
+    text-align: center;
+    position: relative;
+    left: 50%;
+    margin-left: -200px;
+    width: 400px;
+}
+
+.login h1 {
+    color: #666;
+    letter-spacing: -1px;
+    margin: 20px 0px;
+}
+
+.login .loginBt {
+    color: #fff;
+    width: 100%;
+    padding: 10px 0px;
+    text-align: center;
+    border: none;
+    font-size: 1.25rem;
+    font-weight: 500;
+    border-radius: 3px;
+    margin-bottom: 20px;
+    cursor: pointer;
+}
+
+.login .btFace {
+    background-color: #3161a8;
+}
+
+.login .btGoogle {
+    background-color: #f00;
+}
+
+/* footer */
+footer {
+    position: absolute;
+    width: 100%;
+    padding: 10px 0px;
+    background-color: #ddd;
+    bottom: 0px;
+    color: #666;
+    font-size: 0.75rem;
+}

@@ -1,12 +1,11 @@
-<h1>
-  Login
-</h1>
-<div>
-  <button class="loginBtn loginBtn--facebook" (click)="loginFacebook()" *ngIf="!(user | async)?.uid">
-  Login with Facebook
-</button>
-  <br>
-  <button class="loginBtn loginBtn--google" (click)="loginGoogle()" *ngIf="!(user | async)?.uid">
-  Login with Google
-</button>
+<div class="login">
+  <img src="./assets/images/logo.png" title="E-Commerce" alt="e-commerce" style="width: 100%;" />
+  <h1>Faça login em nossa loja</h1>
+  <!-- botão de login -->
+  <button class="loginBt btFace" (click)="loginFacebook()" *ngIf="!(user | async)?.uid" title="Clique para fazer login com Facebook">
+    Login com Facebook
+  </button>
+  <button class="loginBt btGoogle" (click)="loginGoogle()" *ngIf="!(user | async)?.uid" title="Clique para fazer login com Google">
+    Login com Google
+  </button>
 </div>

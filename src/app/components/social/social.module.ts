@@ -2,20 +2,18 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { AngularFireAuthModule } from 'angularfire2/auth';
 
-import { ListComponent } from './list.component';
-import { routingList } from './list.routing';
+import { SocialComponent } from './social.component';
 
 @NgModule({
   imports: [
     CommonModule,
-    routingList,
     AngularFireAuthModule
   ],
   exports: [
-    ListComponent
+    SocialComponent
   ],
   declarations: [
-    ListComponent
+    SocialComponent
   ]
 })
-export class ListModule { }
+export class SocialModule { }

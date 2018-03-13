@@ -1,12 +1,12 @@
 import { Routes, RouterModule } from '@angular/router';
 
-import { ListComponent } from './list.component';
+import { DetailsComponent } from './details.component';
 import { AuthGuard } from '../../../guards/auth.guard';
 
 const routesList: Routes = [
   {
-    path: 'products/list/:id',
-    component: ListComponent,
+    path: 'products/details/:id',
+    component: DetailsComponent,
     canActivate: [AuthGuard]
   }
 ];

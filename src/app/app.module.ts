@@ -7,7 +7,7 @@ import { routingApp } from './app.routing';
 
 import { HomeModule } from './components/home/home.module';
 import { ShopModule } from './components/products/shop/shop.module';
-import { ListModule } from './components/products/list/list.module';
+import { DetailsModule } from './components/products/details/details.module';
 
 @NgModule({
   declarations: [
@@ -17,7 +17,7 @@ import { ListModule } from './components/products/list/list.module';
     BrowserModule,
     HomeModule,
     ShopModule,
-    ListModule,
+    DetailsModule,
     routingApp
   ],
   providers: [
