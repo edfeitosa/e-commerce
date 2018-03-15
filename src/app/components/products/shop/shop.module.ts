@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { HttpModule } from '@angular/http';
 
 import { ShopComponent } from './shop.component';
 import { routingShop } from './shop.routing';
@@ -15,8 +14,7 @@ import { ProductService } from './../../../services/products.service';
   imports: [
     CommonModule,
     routingShop,
-    HeaderModule,
-    HttpModule
+    HeaderModule
   ],
   exports: [
     ShopComponent

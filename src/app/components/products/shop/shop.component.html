@@ -1,4 +1,17 @@
 <app-header></app-header>
 <section class="container margin75">
-    <h1>Lista de Produtos</h1>
+    <h1>Nossos Produtos</h1>
+    <div *ngFor="let item of itensOut;">
+        <!-- mensagem caso não existam itens -->
+        <div *ngIf="item.pro_id == 0" class="alerta">
+            {{item.pro_descricao}}
+        </div>
+        <!-- itens -->
+        <div *ngIf="item.pro_id != 0" class="produto">
+            <div class="foto">
+                <img [src]="item.pro_arquivo" [title]="item.pro_nome" />
+            </div>
+            {{item.pro_nome}}
+        </div>
+    </div>
 </section>

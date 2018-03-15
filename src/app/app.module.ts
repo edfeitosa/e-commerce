@@ -1,5 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { HttpModule } from '@angular/http';
 
 import { AppComponent } from './app.component';
 import { AuthGuard } from './guards/auth.guard';
@@ -18,7 +19,8 @@ import { DetailsModule } from './components/products/details/details.module';
     HomeModule,
     ShopModule,
     DetailsModule,
-    routingApp
+    routingApp,
+    HttpModule
   ],
   providers: [
     AuthGuard
