@@ -23,6 +23,13 @@ export class SocialService {
     loginFacebook() {
         this.afAuth.auth.signInWithPopup(new firebase.auth.FacebookAuthProvider())
             .then(function (sucess) {
+                this.authState.subscribe((user: firebase.User) => {
+                    console.log('user is: ' + user);
+                    this.currentUser = user;
+                    sessionStorage.setItem("displayName", "permited");
+                    sessionStorage.setItem("uid", "permited");
+                    sessionStorage.setItem("photoURL", "permited");
+                });
                 sessionStorage.setItem("access", "permited");
                 window.location.reload();
             })

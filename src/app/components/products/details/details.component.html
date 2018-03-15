@@ -1,2 +1,37 @@
-<h2>Detalhes do Produto</h2>
-<a routerLink="/products/shop" routerLinkActive="active">Loja</a>
+<app-header></app-header>
+<section class="container margin75">
+    <h1>Detalhes do Produto</h1>
+    <a routerLink="/products/shop" routerLinkActive="active">Loja</a>
+    <div *ngFor="let item of itensOut;">
+        <!-- mensagem caso não existam itens -->
+        <div *ngIf="item.pro_id == 0" class="alerta">
+            {{item.pro_descricao}}
+        </div>
+        <!-- itens -->
+        <div *ngIf="item.pro_id != 0" class="produto">
+            <div class="foto">
+                <img [src]="item.pro_arquivo" [title]="item.pro_nome" />
+            </div>
+            {{item.pro_nome}}
+        </div>
+    </div>
+    <!-- comentários -->
+    <form novalidate [formGroup]="form" (ngSubmit)="form_submit(content)">
+        <input type="text" formControlName="com_usuario" value="{{(user | async)?.displayName}}" required />
+        <div class="form-group"
+            [ngClass]="{
+                'has-danger': com_mensagem.invalid && (com_mensagem.dirty || com_mensagem.touched),
+                'has-success': com_mensagem.valid && (com_mensagem.dirty || com_mensagem.touched)
+            }">
+            <label class="titulo-input">Descrição (*)</label>
+            <input type="text" formControlName="com_mensagem" placeholder="Digite um comentário" required>
+            <div class="form-control-feedback" *ngIf="com_mensagem.errors && (com_mensagem.dirty || com_mensagem.touched)">
+                <p *ngIf="form.controls['com_mensagem'].hasError('required')">Antes de continuar, você precisa informar uma descrição</p>
+                <p *ngIf="form.controls['com_mensagem'].hasError('maxlength')">O campo deve ter no máximo 144 caracteres</p>
+            </div>
+        </div>
+        <div class="form-actions">
+            <button type="submit" [disabled]="!form.valid" class="btn btn-success"><i class="fa fa-check"></i> Salvar</button>
+        </div>
+    </form>
+</section>

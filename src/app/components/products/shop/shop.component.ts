@@ -24,15 +24,9 @@ export class ShopComponent implements OnInit {
     this.products();
   }
 
-  // verifica id na url
-  verifica_id(): number {
-    this.activatedRoute.queryParams.subscribe((queryParams: Params) => { this.id = queryParams['id']; });
-    return (this.id != null) ? +this.id : 0 ;
-  }
-
   // lista produtos
   products() {
-    this.productsService.products_list(this.verifica_id())
+    this.productsService.products_list(0)
     .subscribe(
       retorno => {
         this.itensOut = retorno;

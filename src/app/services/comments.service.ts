@@ -24,13 +24,12 @@ export class CommentsService {
         return headers;
     }
 
-    comment_save(Nome: string, Descricao: string, Id: number) {
+    comment_save(pro_id: number, com_usuario: string, com_mensagem: string) {
         let params;
-        params = JSON.stringify({ "identificadorSistema": Nome, "descricaoSistema": Descricao, "idSistema": Id });
+        params = JSON.stringify({ "pro_id": pro_id, "com_usuario": com_usuario, "com_mensagem": com_mensagem });
         let options = new RequestOptions({ headers: this.header() });
         return this.http.post(
-          GlobalVariable.SERVIDOR + GlobalVariable.COMMENT_SAVE + "?identificadorSistema=" + Nome + "&descricaoSistema=" + Descricao + "&idSistema=" + Id, 
-          params, options)
+          GlobalVariable.SERVIDOR + GlobalVariable.COMMENT_SAVE, params, options)
         .map((response:Response) => {
             let insert = response.json();
             this.showComponent.emit(true);
@@ -39,9 +38,9 @@ export class CommentsService {
         .catch((error:any) => Observable.throw(error.json().error || 'Erro no servidor'));
     }
     
-    comment_list() {
+    comment_list(Id: number) {
         let options = new RequestOptions({ headers: this.header() });
-        return this.http.get(GlobalVariable.SERVIDOR + GlobalVariable.COMMENT_LIST, options)
+        return this.http.get(GlobalVariable.SERVIDOR + GlobalVariable.COMMENT_LIST + '/' + Id, options)
         .map((response:Response) => {
             let list = response.json();
             return list;
