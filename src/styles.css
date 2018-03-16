@@ -22,6 +22,12 @@ h1 {
     margin-bottom: 20px;
 }
 
+h2 {
+    color: #666;
+    letter-spacing: -1px;
+    margin-bottom: 20px;
+}
+
 /* header */
 .header {
     position: absolute;
@@ -57,7 +63,7 @@ h1 {
     float: right;
     width: 30px;
     height: 30px;
-    border: 5px solid rgb(219, 0, 0);
+    border: 5px solid #b50000;
     border-radius: 50px;
     background-color: #fff;
     margin: -10px 0px 0px 10px;
@@ -68,9 +74,9 @@ h1 {
     float: right;
     width: 40px;
     height: 40px;
-    border: 5px solid rgb(219, 0, 0);
+    border: 5px solid #b50000;
     border-radius: 50px;
-    background-color: rgb(219, 0, 0);
+    background-color: #b50000;
     margin: -10px 0px 0px 5px;
     overflow: hidden;
     color: #fff;
@@ -168,7 +174,7 @@ h1 {
     width: 96%;
 }
 
-/* lista de dados */
+/* lista de produtos */
 .produto {
     float: left;
     width: 20%;
@@ -177,6 +183,7 @@ h1 {
     padding: 10px;
     background-color: #fff;
     border-radius: 3px;
+    box-shadow: 0px 0px 3px #999;
 }
 
 .produto .foto {
@@ -190,9 +197,102 @@ h1 {
     width: 100%;
 }
 
+.produto a, .produto a:hover, .produto a:visited {
+    background-color: #b50000;
+    color: #fff;
+    text-decoration: none;
+    font-size: 0.75rem;
+    font-weight: 700;
+    float: right;
+    bottom: 0px;
+    padding: 5px;
+    margin-top: 20px;
+}
+
+/* detalhes */
+.foto_detalhe {
+    float: left;
+    width: 400px;
+    height: 300px;
+    margin: 0px 20px 20px 0px;
+    padding: 10px;
+    background-color: #fff;
+    border-radius: 3px;
+    box-shadow: 0px 0px 3px #999;
+}
+
+.foto_detalhe img {
+    width: 100%;
+}
+
+.link {
+    background-color: #b50000;
+    color: #fff;
+    text-decoration: none;
+    font-weight: 700;
+    float: left;
+    bottom: 0px;
+    padding: 5px;
+    margin-bottom: 20px;
+}
+
+.comentarios {
+    float: left;
+    width: 100%;
+    margin: 0px 0px 10px 0px;
+    padding: 10px;
+    background-color: #fff;
+    border-radius: 3px;
+    box-shadow: 0px 0px 3px #999;
+}
+
+.comentarios .sub {
+    font-size: 0.75rem;
+    font-weight: 700;
+    color: #666;
+}
+
+.tituloInput {
+    font-weight: bold;
+    font-size: 0.80rem;
+    margin: 20px 0px 0px 0px;
+    color: #666;
+}
+
+.textarea {
+    padding: 7px;
+    border-radius: 3px;
+    width: 100%;
+    height: 70px;
+    box-shadow: 0px 0px 3px #999;
+    border: 1px solid #ccc;
+    resize: none;
+}
+
+.botao {
+    padding: 7px;
+    width: 120px;
+    font-weight: bold;
+    color: #666;
+    cursor: pointer;
+    background-color: #e6e6e6;
+    border: 1px solid #999;
+    box-shadow: none;
+    border-radius: 3px;
+	float: left;
+    margin: 5px 0px 20px 0px;
+    text-align: center;
+}
+
+.erro-text {
+    color: #f00;
+    font-weight: bold;
+    font-size: 0.75rem;
+}
+
 /* footer */
 footer {
-    position: absolute;
+    position: fixed;
     width: 100%;
     padding: 10px 0px;
     background-color: #ddd;

@@ -12,6 +12,8 @@
                 <img [src]="item.pro_arquivo" [title]="item.pro_nome" />
             </div>
             {{item.pro_nome}}
+            <br />
+            <a routerLink="/products/details/{{item.pro_id}}" routerLinkActive="active">Saiba mais</a>
         </div>
     </div>
 </section>

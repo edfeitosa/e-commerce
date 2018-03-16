@@ -1,9 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute, Params } from '@angular/router';
 import { ReactiveFormsModule, FormGroup, FormBuilder, Validators, FormControl } from '@angular/forms';
-import { AngularFireAuth } from 'angularfire2/auth';
-import * as firebase from 'firebase/app';
-import { Observable } from 'rxjs/Observable';
 
 import { ProductService } from '../../../services/products.service';
 import { CommentsService } from '../../../services/comments.service';
@@ -14,8 +11,6 @@ import { CommentsService } from '../../../services/comments.service';
   styleUrls: ['./details.component.css']
 })
 export class DetailsComponent implements OnInit {
-
-  user: Observable<firebase.User>
 
   public itensOut: any[];
   public comentariosOut: any[];
@@ -30,33 +25,28 @@ export class DetailsComponent implements OnInit {
   constructor(
     private activatedRoute: ActivatedRoute,
     private productsService: ProductService,
-    private commentsService: CommentsService,
-    private afAuth: AngularFireAuth
-  ) {
-    this.user = this.afAuth.authState
-  }
+    private commentsService: CommentsService
+  ) { }
 
   ngOnInit() {
     this.products();
+    this.comentarios();
     this.form_validation();
     this.form_group();
-    console.log(this.verifica_id());
-    this.user;
-    this.user.subscribe((user: firebase.User) => {
-        console.log('Seu usuário é: ' + user.displayName);
-    });
   }
 
   // verifica id na url
   verifica_id(): number {
-    this.activatedRoute.queryParams.subscribe((queryParams: Params) => { this.id = queryParams['id']; });
-    return this.id;
-    // return (this.id != null) ? +this.id : 0 ;
+    this.activatedRoute.params.subscribe(
+      params => {
+        this.id = params.id;
+      });
+    return (this.id != null) ? +this.id : 0 ;
   }
 
   // lista produto a partir de id
   products() {
-    this.productsService.products_list(1)
+    this.productsService.products_list(this.verifica_id())
     .subscribe(
       retorno => {
         this.itensOut = retorno;
@@ -68,27 +58,26 @@ export class DetailsComponent implements OnInit {
   // form
   form_group() {
     this.form = new FormGroup({
-      com_usuario: this.com_usuario,
       com_mensagem: this.com_mensagem
     });
   }
 
-  form_validation(com_usuario = 'Teste TESTE', com_mensagem = '') {
-    this.com_usuario = new FormControl(com_usuario, Validators.nullValidator);
+  form_validation(com_mensagem = '') {
     this.com_mensagem = new FormControl(com_mensagem, Validators.compose([Validators.required, Validators.maxLength(144)]));
   }
 
   form_submit(content) {
     this.commentsService.comment_save(
-      /* this.verifica_id() */ 1,
-      this.form.controls.com_usuario.value, 
+      this.verifica_id(),
+      sessionStorage.getItem("nome"),
       this.form.controls.com_mensagem.value)
     .subscribe(
       retorno => {
-        if (retorno.HttpStatusCode == 200 && retorno.SystemCode == 1) {
+        if (retorno[0].HttpStatusCode == 200) {
           this.comentarios();
+          //window.location.reload();
         } else {
-          alert(retorno.Mensagem);
+          alert(retorno[0].Mensagem);
         }
       },
       error=> {

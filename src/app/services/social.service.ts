@@ -11,8 +11,10 @@ export class SocialService {
  
     loginGoogle() {
         this.afAuth.auth.signInWithPopup(new firebase.auth.GoogleAuthProvider())
-            .then(function (sucess) {
+            .then((credential) =>  {
                 sessionStorage.setItem("access", "allowed");
+                sessionStorage.setItem("nome", credential.additionalUserInfo.profile.name);
+                sessionStorage.setItem("foto", credential.additionalUserInfo.profile.picture);
                 window.location.reload();
             })
             .catch(function (error) {
@@ -22,15 +24,10 @@ export class SocialService {
    
     loginFacebook() {
         this.afAuth.auth.signInWithPopup(new firebase.auth.FacebookAuthProvider())
-            .then(function (sucess) {
-                this.authState.subscribe((user: firebase.User) => {
-                    console.log('user is: ' + user);
-                    this.currentUser = user;
-                    sessionStorage.setItem("displayName", "permited");
-                    sessionStorage.setItem("uid", "permited");
-                    sessionStorage.setItem("photoURL", "permited");
-                });
-                sessionStorage.setItem("access", "permited");
+            .then((credential) =>  {
+                sessionStorage.setItem("access", "allowed");
+                sessionStorage.setItem("nome", credential.additionalUserInfo.profile.name);
+                sessionStorage.setItem("foto", credential.additionalUserInfo.profile.picture);
                 window.location.reload();
             })
             .catch(function (error) {

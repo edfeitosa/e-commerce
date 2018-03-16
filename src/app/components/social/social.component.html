@@ -1,20 +1,13 @@
 <nav>
   <div class="social">
     <div class="container">
-        Seja bem-vindo <span class="gray">{{(user | async)?.displayName}}</span>
-        <button class="sair" (click)="logout()" *ngIf="(user | async)?.uid" title="Clique para sair">
+        Seja bem-vindo <span class="gray">{{nome}}</span>
+        <button class="sair" (click)="logout()" title="Clique para sair">
             <img src="./assets/images/sair.png" alt="sair" />
         </button>
         <div class="foto">
-            <img src="{{(user | async)?.photoURL}}" style="width:30px;height:30px;">
+            <img [src]="foto" style="width:30px;height:30px;">
         </div>
     </div>
   </div>
 </nav>
-
-<!-- <div *ngIf="(user | async)?.uid">
-    
-    <br> Email: {{(user | async)?.email}}
-    <br> Name: {{(user | async)?.displayName}}
-  </div>
-  <button (click)="logout()" *ngIf="(user | async)?.uid">Logout</button> -->

@@ -1,37 +1,50 @@
 <app-header></app-header>
 <section class="container margin75">
     <h1>Detalhes do Produto</h1>
-    <a routerLink="/products/shop" routerLinkActive="active">Loja</a>
+    <a routerLink="/products/shop" routerLinkActive="active" class="link">Voltar para Produtos</a>
+    <div class="clear"></div>
     <div *ngFor="let item of itensOut;">
         <!-- mensagem caso não existam itens -->
         <div *ngIf="item.pro_id == 0" class="alerta">
             {{item.pro_descricao}}
         </div>
         <!-- itens -->
-        <div *ngIf="item.pro_id != 0" class="produto">
-            <div class="foto">
+        <div *ngIf="item.pro_id != 0">
+            <div class="foto_detalhe">
                 <img [src]="item.pro_arquivo" [title]="item.pro_nome" />
             </div>
-            {{item.pro_nome}}
+            <h2>{{item.pro_nome}}</h2>
+            {{item.pro_descricao}}
         </div>
     </div>
+    <div class="clear"></div>
     <!-- comentários -->
+    <h2>Comentários</h2>
     <form novalidate [formGroup]="form" (ngSubmit)="form_submit(content)">
-        <input type="text" formControlName="com_usuario" value="{{(user | async)?.displayName}}" required />
         <div class="form-group"
             [ngClass]="{
                 'has-danger': com_mensagem.invalid && (com_mensagem.dirty || com_mensagem.touched),
                 'has-success': com_mensagem.valid && (com_mensagem.dirty || com_mensagem.touched)
             }">
-            <label class="titulo-input">Descrição (*)</label>
-            <input type="text" formControlName="com_mensagem" placeholder="Digite um comentário" required>
-            <div class="form-control-feedback" *ngIf="com_mensagem.errors && (com_mensagem.dirty || com_mensagem.touched)">
+            <label class="tituloInput">Digite aqui sue comentário</label><br />
+            <textarea formControlName="com_mensagem" class="textarea" required></textarea>
+            <div class="erro-text" *ngIf="com_mensagem.errors && (com_mensagem.dirty || com_mensagem.touched)">
                 <p *ngIf="form.controls['com_mensagem'].hasError('required')">Antes de continuar, você precisa informar uma descrição</p>
                 <p *ngIf="form.controls['com_mensagem'].hasError('maxlength')">O campo deve ter no máximo 144 caracteres</p>
             </div>
         </div>
         <div class="form-actions">
-            <button type="submit" [disabled]="!form.valid" class="btn btn-success"><i class="fa fa-check"></i> Salvar</button>
+            <button type="submit" [disabled]="!form.valid" class="botao">Comentar</button>
         </div>
     </form>
+    <div class="clear"></div>
+    <!-- lista de comentários -->
+    <div *ngFor="let comentario of comentariosOut;">
+        <div *ngIf="comentario.com_id == 0" class="alerta">Seja o primeiro a comentar</div>
+        <div *ngIf="comentario.com_id != 0" class="comentarios">
+            <div class="sub">Enviado por {{comentario.com_usuario}}</div>
+            {{comentario.com_mensagem}}
+        </div>
+    </div>
+    <div class="clear"></div>
 </section>

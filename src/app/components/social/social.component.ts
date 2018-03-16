@@ -1,9 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { AngularFireAuth } from 'angularfire2/auth';
-import * as firebase from 'firebase/app';
-import { Observable } from 'rxjs/Observable';
 
 import { SocialService } from './../../services/social.service';
+import { isNull } from 'util';
 
 @Component({
   selector: 'app-social',
@@ -12,16 +10,17 @@ import { SocialService } from './../../services/social.service';
 })
 export class SocialComponent implements OnInit {
 
-  user: Observable<firebase.User>
+  public nome: string;
+  public foto: string;
 
   constructor(
-    private socialService: SocialService, 
-    private afAuth: AngularFireAuth
-  ) {
-    this.user = this.afAuth.authState
-  }
+    private socialService: SocialService
+  ) { }
 
   ngOnInit() {
+    this.nome = sessionStorage.getItem("nome");
+    this.foto = sessionStorage.getItem("foto");
+    console.log(sessionStorage.getItem("nome"));
   }
 
   logout(): void {
